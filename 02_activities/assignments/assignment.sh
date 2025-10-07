@@ -28,21 +28,39 @@ unzip -q rawdata.zip
 # Complete assignment here
 
 # 1. Create a directory named data
+cd "/Users/corymckenzie/Desktop/shell/02_activities/assignments"
+mkdir data
 
 # 2. Move the ./rawdata directory to ./data/raw
+mv "/Users/corymckenzie/Desktop/shell/02_activities/assignments/newproject/rawdata" "/Users/corymckenzie/Desktop/shell/02_activities/assignments/data/raw"
 
 # 3. List the contents of the ./data/raw directory
+cd "/Users/corymckenzie/Desktop/shell/02_activities/assignments/data/raw"
+ls
 
 # 4. In ./data/processed, create the following directories: server_logs, user_logs, and event_logs
+cd "/Users/corymckenzie/Desktop/shell/02_activities/assignments/data"
+mkdir processed
+cd processed
+mkdir server_logs user_logs event_logs
 
 # 5. Copy all server log files (files with "server" in the name AND a .log extension) from ./data/raw to ./data/processed/server_logs
+find "/Users/corymckenzie/Desktop/shell/02_activities/assignments/data/raw" -name "*server*.log" -exec cp {} "/Users/corymckenzie/Desktop/shell/02_activities/assignments/data/processed/server_logs" \;
+
 
 # 6. Repeat the above step for user logs and event logs
+find "/Users/corymckenzie/Desktop/shell/02_activities/assignments/data/raw" -name "*user*.log" -exec cp {} "/Users/corymckenzie/Desktop/shell/02_activities/assignments/data/processed/user_logs" \;
+find "/Users/corymckenzie/Desktop/shell/02_activities/assignments/data/raw" -name "*event*.log" -exec cp {} "/Users/corymckenzie/Desktop/shell/02_activities/assignments/data/processed/event_logs" \;
 
 # 7. For user privacy, remove all files containing IP addresses (files with "ipaddr" in the filename) from ./data/raw and ./data/processed/user_logs
+cd "/Users/corymckenzie/Desktop/shell/02_activities/assignments/data/raw"
+rm *ipaddr*.*
+cd "/Users/corymckenzie/Desktop/shell/02_activities/assignments/data/processed/user_logs"
+rm *ipaddr*.*
 
 # 8. Create a file named ./data/inventory.txt that lists all the files in the subfolders of ./data/processed
-
+cd "/Users/corymckenzie/Desktop/shell/02_activities/assignments/data"
+ls -R > inventory.txt
 
 ###########################################
 
